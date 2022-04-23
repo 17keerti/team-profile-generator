@@ -15,8 +15,8 @@ function addManager() {
     },
     {
       type: 'input',
-    message: "What is the team manager's id ?",
-    name: 'id',
+      message: "What is the team manager's id ?",
+      name: 'id',
     },
     {
       type: 'input',
@@ -28,19 +28,36 @@ function addManager() {
       message: "What is the team manager's office number?",
       name: 'officeNumber',
     }
-    ])
+  ])
     .then((managerResponse) => {
-      const  { name, id, email, officeNumber } = managerResponse; 
-        const manager = new Manager (name, id, email, officeNumber);
+      const { name, id, email, officeNumber } = managerResponse;
+      const manager = new Manager(name, id, email, officeNumber);
 
-        myTeamArray.push(manager); 
-        console.log(manager); 
+      myTeamArray.push(manager);
+      console.log(manager);
+      
+      inquirer.prompt([
+        {
+          type: 'confirm',
+          name: 'confirmMoreEmployees',
+          message: 'Would you like to add more team members?',
+          default: false
+        }
+      ])
+      .then((response) => {
+        if(response.confirmMoreEmployees){
+          return addEmployee();
+        } else {
+          return myTeamArray;
+        }
+      })
     })
+
 }
 
 
 function addEmployee() {
-  return inquirer.prompt ([
+  return inquirer.prompt([
     {
       type: 'list',
       message: "Which type of team member would you like to add ?",
@@ -48,13 +65,13 @@ function addEmployee() {
       choices: ['Engineer', 'Intern', 'I dont want to add any more team members'],
       default: 'I dont want to add any more team members',
     }
-  ]) 
-  .then(function (roleResponse){
-    if(roleResponse.role === 'Engineer'){
-      addEngineer();
-    } else if(roleResponse.role === 'Intern'){
-      addIntern();
-    }
+  ])
+    .then((roleResponse) => {
+      if (roleResponse.role === 'Engineer') {
+        addEngineer();
+      } else if (roleResponse.role === 'Intern') {
+        addIntern();
+      }
   })
 }
 
@@ -66,7 +83,7 @@ function addEngineer() {
       name: 'name',
     },
     {
-        type: 'input',
+      type: 'input',
       message: "What is the your Engineer's id ?",
       name: 'id',
     },
@@ -79,15 +96,30 @@ function addEngineer() {
       type: 'input',
       message: "What is the your Engineer's Github username ?",
       name: 'githubUsername',
-    },
+    }
   ])
-  .then((engineerResponse) => {
-    const  { name, id, email, officeNumber } = engineerResponse; 
-        const engineer = new Engineer (name, id, email, officeNumber);
+    .then((engineerResponse) => {
+      const { name, id, email, githubUsername } = engineerResponse;
+      const engineer = new Engineer(name, id, email, githubUsername);
 
-        myTeamArray.push(engineer); 
-        console.log(engineer); 
-  })
+      myTeamArray.push(engineer);
+      console.log(engineer);
+      inquirer.prompt([
+        {
+          type: 'confirm',
+          name: 'confirmMoreEmployees',
+          message: 'Would you like to add more team members?',
+          default: false
+        }
+      ])
+      .then((response) => {
+        if(response.confirmMoreEmployees){
+          return addEmployee();
+        } else {
+          return myTeamArray;
+        }
+    })
+    })
 }
 
 
@@ -100,27 +132,42 @@ function addIntern() {
     },
     {
       type: 'input',
-    message: "What is the your Intern's id ?",
-    name: 'id',
-  },
-  {
-    type: 'input',
-    message: "What is the your Intern's email ?",
-    name: 'email',
-  },
-  {
-    type: 'input',
-    message: "What is your Intern's School ?",
-    name: 'school',
-  }
+      message: "What is the your Intern's id ?",
+      name: 'id',
+    },
+    {
+      type: 'input',
+      message: "What is the your Intern's email ?",
+      name: 'email',
+    },
+    {
+      type: 'input',
+      message: "What is your Intern's School ?",
+      name: 'school',
+    }
   ])
-  .then((internResponse) => {
-    const  { name, id, email, school } = internResponse; 
-        const intern = new Intern (name, id, email, school);
+    .then((internResponse) => {
+      const { name, id, email, school } = internResponse;
+      const intern = new Intern(name, id, email, school);
 
-        myTeamArray.push(intern); 
-        console.log(intern); 
-  })
+      myTeamArray.push(intern);
+      console.log(intern);
+      inquirer.prompt([
+        {
+          type: 'confirm',
+          name: 'confirmMoreEmployees',
+          message: 'Would you like to add more team members?',
+          default: false
+        }
+      ])
+      .then((response) => {
+        if(response.confirmMoreEmployees){
+          return addEmployee();
+        } else {
+          return myTeamArray;
+        }
+    })
+    })
 }
 
-addEmployee();
+addManager();
