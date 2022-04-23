@@ -35,7 +35,7 @@ function addManager() {
 
       myTeamArray.push(manager);
       console.log(manager);
-      
+
       inquirer.prompt([
         {
           type: 'confirm',
@@ -44,13 +44,13 @@ function addManager() {
           default: false
         }
       ])
-      .then((response) => {
-        if(response.confirmMoreEmployees){
-          return addEmployee();
-        } else {
-          return myTeamArray;
-        }
-      })
+        .then((response) => {
+          if (response.confirmMoreEmployees) {
+            return addEmployee();
+          } else {
+            return myTeamArray;
+          }
+        })
     })
 
 }
@@ -72,7 +72,7 @@ function addEmployee() {
       } else if (roleResponse.role === 'Intern') {
         addIntern();
       }
-  })
+    })
 }
 
 function addEngineer() {
@@ -112,13 +112,13 @@ function addEngineer() {
           default: false
         }
       ])
-      .then((response) => {
-        if(response.confirmMoreEmployees){
-          return addEmployee();
-        } else {
-          return myTeamArray;
-        }
-    })
+        .then((response) => {
+          if (response.confirmMoreEmployees) {
+            return addEmployee();
+          } else {
+            return myTeamArray;
+          }
+        })
     })
 }
 
@@ -160,13 +160,13 @@ function addIntern() {
           default: false
         }
       ])
-      .then((response) => {
-        if(response.confirmMoreEmployees){
-          return addEmployee();
-        } else {
-          return myTeamArray;
-        }
-    })
+        .then((response) => {
+          if (response.confirmMoreEmployees) {
+            return addEmployee();
+          } else {
+            return myTeamArray;
+          }
+        })
     })
 }
 
