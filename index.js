@@ -3,8 +3,8 @@ const fs = require("fs");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const templateHtml = require("./src/templateHtml");
-const fileName = ("./dist/generatedHtml.html");
+const generateHtml = require("./src/templateHtml");
+const fileName = "./dist/generatedHtml.html";
 
 const myTeamArray = [];
 
@@ -195,10 +195,21 @@ function addIntern() {
   });
 }
 
+function writeToFile(filename, data) {
+  const generatedHtml = generateHtml(data);
+  fs.writeFile(filename, generatedHtml, (err) => {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log('Successfully file has been created!');
+    }
+  })
+}
+
 function init() {
-  var test = addManager();
-  test.then((data) => {
-    console.log(data);
+  var dataManager = addManager();
+  dataManager.then((data) => {
+    writeToFile(fileName, data);
   });
 }
 
