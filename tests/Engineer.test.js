@@ -1,6 +1,6 @@
 const Engineer = require("../lib/Engineer")
 
-describe("Employee", () => {
+describe("Engineer", () => {
   describe('Initialization', () => {
     describe("github", () => {
       it("can set github username using constructor", () => {
