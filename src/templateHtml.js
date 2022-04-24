@@ -53,22 +53,22 @@ function generateInternCard(Intern) {
 
 function generateTeam(team) {
 
-  const htmlPageArray = [];
+  var htmlPage = '';
   // console.log(team);
   for (let i = 0; i < team.length; i++) {
     if (team[i].getRole() == "Manager") {
-      htmlPageArray.push(generateManagerCard(team[i]));
+      htmlPage += "\n" + generateManagerCard(team[i]);
     }
     if (team[i].getRole() == "Engineer") {
-      htmlPageArray.push(generateEngineerCard(team[i]));
+      htmlPage += "\n" + generateEngineerCard(team[i]);
     }
     if (team[i].getRole() == "Intern") {
-      htmlPageArray.push(generateInternCard(team[i]));
+      htmlPage += "\n" + generateInternCard(team[i]);
     }
 
 
   }
-  return htmlPageArray;
+  return htmlPage;
 }
 
 
