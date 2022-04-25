@@ -8,7 +8,7 @@ function generateManagerCard(Manager) {
               <div class="card-body">
                 <ul class="list-group">
                   <li class="list-group-item">ID: ${Manager.id}</li>
-                  <li class="list-group-item">Email: ${Manager.email}<a href=""></a></li>
+                  <li class="list-group-item">Email:<a href="mailto:${Manager.email}">${Manager.email}</a></li>
                   <li class="list-group-item">Office number: ${Manager.officeNumber}</li>
                 </ul>
               </div>
@@ -26,8 +26,8 @@ function generateEngineerCard(Engineer) {
               <div class="card-body">
                 <ul class="list-group">
                   <li class="list-group-item">ID: ${Engineer.getId()}</li>
-                  <li class="list-group-item">Email: ${Engineer.getEmail()}<a href=""></a></li>
-                  <li class="list-group-item">Github: ${Engineer.getGithub()}</li>
+                  <li class="list-group-item">Email: <a href="mailto:${Engineer.getEmail()}">${Engineer.getEmail()}</a></li>
+                  <li class="list-group-item">Github:<a target="blank" href="https://github.com/${Engineer.getGithub()}"> ${Engineer.getGithub()}</a></li>
                 </ul>
               </div>
             </div>`;
@@ -44,7 +44,7 @@ function generateInternCard(Intern) {
               <div class="card-body">
                 <ul class="list-group">
                   <li class="list-group-item">ID: ${Intern.getId()}</li>
-                  <li class="list-group-item">Email: ${Intern.getEmail()}<a href=""></a></li>
+                  <li class="list-group-item">Email: <a href="mailto:${Intern.getEmail()}">${Intern.getEmail()}</a></li>
                   <li class="list-group-item">School: ${Intern.getSchool()}</li>
                 </ul>
               </div>
