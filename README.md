@@ -18,6 +18,10 @@ The Team Profile Generator is a Node.js command-line application that takes in i
 
 
 
+https://user-images.githubusercontent.com/102001384/165027952-ea110514-ce7d-49d4-bf2d-b76a84e6d843.mp4
+
+
+
 ## Installation
 
 Clone the repo down to your local so you have the Node project on your local.<br>
